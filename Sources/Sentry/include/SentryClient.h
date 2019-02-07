@@ -16,7 +16,7 @@
 #import "SentryDefines.h"
 #endif
 
-@class SentryEvent, SentryBreadcrumbStore, SentryUser, SentryThread, SentryQueueableRequestManager;
+@class SentryEvent, SentryBreadcrumbStore, SentryUser, SentryThread;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -127,10 +127,6 @@ NS_SWIFT_NAME(Client)
  * @return SentryClient
  */
 - (_Nullable instancetype)initWithDsn:(NSString *)dsn
-                     didFailWithError:(NSError *_Nullable *_Nullable)error;
-
-- (_Nullable instancetype)initWithDsn:(NSString *)dsn
-                       requestManager:(id)requestManager
                      didFailWithError:(NSError *_Nullable *_Nullable)error;
 
 /**

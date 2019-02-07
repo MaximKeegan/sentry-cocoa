@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
               completionHandler:(_Nullable SentryRequestOperationFinished)completionHandler {
     self = [super init];
     if (self) {
+        
+        NSLog(@"%@", [session.delegate class]);
         self.request = request;
         self.task = [session dataTaskWithRequest:self.request completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;

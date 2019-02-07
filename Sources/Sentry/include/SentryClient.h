@@ -129,6 +129,10 @@ NS_SWIFT_NAME(Client)
 - (_Nullable instancetype)initWithDsn:(NSString *)dsn
                      didFailWithError:(NSError *_Nullable *_Nullable)error;
 
+- (_Nullable instancetype)initWithDsn:(NSString *)dsn
+                       requestManager:(id)requestManager
+                     didFailWithError:(NSError *_Nullable *_Nullable)error;
+
 /**
  * This automatically adds breadcrumbs for different user actions.
  */

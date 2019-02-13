@@ -19,6 +19,16 @@
 @implementation NSDictionary (Sanitize)
 
 - (NSDictionary *)sentry_sanitize {
+    NSArray *maskedWords = @[@"password",
+                             @"pin",
+                             @"X-CSRF-TOKEN",
+                             @"RsRememberMeToken",
+                             @"refresh_token",
+                             @"guid",
+                             @"code",
+                             @"csrf_token",
+                             @"session_token";
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     for (NSString *key in self.allKeys) {
         if ([[self objectForKey:key] isKindOfClass:NSDictionary.class]) {
@@ -27,6 +37,10 @@
             [dict setValue:[((NSDate *)[self objectForKey:key]) sentry_toIso8601String] forKey:key];
         } else if ([key hasPrefix:@"__sentry"]) {
             continue; // We don't want to add __sentry variables
+        } else if ([maskedWords indexOfObject:key] != NSNotFound && [[self objectForKey:key] isKindOfClass:NSString.class]) {
+            NSString *value = [self objectForKey:key];
+            NSString *maskedString = [@"" stringByPaddingToLength:value.length withString: @"*" startingAtIndex:0];
+            [dict setValue:maskedString forKey:key];
         } else {
             [dict setValue:[self objectForKey:key] forKey:key];
         }

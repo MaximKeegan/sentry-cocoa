@@ -27,7 +27,7 @@
                              @"guid",
                              @"code",
                              @"csrf_token",
-                             @"session_token";
+                             @"session_token"];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     for (NSString *key in self.allKeys) {

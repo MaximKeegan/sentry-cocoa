@@ -10,6 +10,7 @@
 
 #import <Sentry/NSDictionary+Sanitize.h>
 #import <Sentry/NSDate+Extras.h>
+#import <Sentry/SentryClient.h>
 
 #else
 #import "NSDictionary+Sanitize.h"
@@ -19,15 +20,7 @@
 @implementation NSDictionary (Sanitize)
 
 - (NSDictionary *)sentry_sanitize {
-    NSArray *maskedWords = @[@"password",
-                             @"pin",
-                             @"X-CSRF-TOKEN",
-                             @"RsRememberMeToken",
-                             @"refresh_token",
-                             @"guid",
-                             @"code",
-                             @"csrf_token",
-                             @"session_token"];
+    NSArray *maskedWords = [[SentryClient sharedClient] maskKeywords];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     for (NSString *key in self.allKeys) {

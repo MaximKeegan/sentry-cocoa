@@ -120,6 +120,11 @@ NS_SWIFT_NAME(Client)
 @property(nonatomic, assign) NSUInteger maxBreadcrumbs;
 
 /**
+ * Set the keywords to sanitize breadcrumbs.
+ */
+@property(nonatomic, strong) NSArray *maskKeywords;
+
+/**
  * Initializes a SentryClient. Pass your private DSN string.
  *
  * @param dsn DSN string of sentry

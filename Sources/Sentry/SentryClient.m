@@ -91,6 +91,7 @@ requestManager:(id <SentryRequestManager>)requestManager
         [self setupQueueing];
         _extra = [NSDictionary new];
         _tags = [NSDictionary new];
+        _maskKeywords = [NSArray new];
         self.dsn = [[SentryDsn alloc] initWithString:dsn didFailWithError:error];
         self.requestManager = requestManager;
         if (logLevel > 1) { // If loglevel is set > None

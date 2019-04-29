@@ -1,5 +1,5 @@
 //
-//  NSDictionary+Sanitize.m
+//  NSDictionary+SentrySanitize.m
 //  Sentry
 //
 //  Created by Daniel Griesser on 16/06/2017.
@@ -8,16 +8,16 @@
 
 #if __has_include(<Sentry/Sentry.h>)
 
-#import <Sentry/NSDictionary+Sanitize.h>
-#import <Sentry/NSDate+Extras.h>
 #import <Sentry/SentryClient.h>
+#import <Sentry/NSDictionary+SentrySanitize.h>
+#import <Sentry/NSDate+SentryExtras.h>
 
 #else
-#import "NSDictionary+Sanitize.h"
-#import "NSDate+Extras.h"
+#import "NSDictionary+SentrySanitize.h"
+#import "NSDate+SentryExtras.h"
 #endif
 
-@implementation NSDictionary (Sanitize)
+@implementation NSDictionary (SentrySanitize)
 
 - (NSDictionary *)sentry_sanitize {
     NSArray *maskedWords = [[SentryClient sharedClient] maskKeywords];

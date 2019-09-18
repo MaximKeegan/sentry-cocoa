@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.4.0
+
+- feat: Helper property on event to send raw payload
+
+## 4.3.4
+
+- fix: #305
+
 ## 4.3.3
 
 - fix: 64 int conversion #296
